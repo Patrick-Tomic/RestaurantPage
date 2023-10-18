@@ -1,18 +1,30 @@
 import _ from 'lodash';
 import './styles/main.scss';
-import Logo from './flag.png'
+import buildMain, {build} from './main.js'
+import buildMenu, {menu} from './menu.js'
 
-function build(){
-    const elements = document.createElement('div');
-   const head = document.createElement('h2');
-   const img = document.createElement('img');
-   head.innerHTML = "Pat's Bosnian American fusion";
-   elements.appendChild(head);
-    img.setAttribute('id','logo');
-    img.src = Logo;
+const content = document.getElementById('content');
+content.appendChild(buildMain());
+const header = document.createElement('div');
+header.classList.add('header');
+const Menubtn = document.createElement('button');
+Menubtn.innerHTML = "Menu";
+Menubtn.classList.add('btn');
+Menubtn.addEventListener('click',()=>{
+    content.innerHTML = "";
     
-    elements.appendChild(img);
-    return elements;
-}
-const content = document.querySelector('#content');
-content.appendChild(build());
+    content.appendChild(buildMenu());
+    content.appendChild(header);
+});
+header.appendChild(Menubtn);
+const mainBtn = document.createElement('button');
+mainBtn.innerHTML = "Main";
+mainBtn.classList.add('btn');
+mainBtn.addEventListener('click',()=>{
+    content.innerHTML = "";
+    
+    content.appendChild(buildMain());
+    content.appendChild(header);
+});
+header.appendChild(mainBtn);
+content.appendChild(header);

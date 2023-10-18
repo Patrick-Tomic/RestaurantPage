@@ -1,0 +1,13 @@
+$primaryColor:lightblue;
+$secondayColor:white;
+
+body{
+    background-color: $primaryColor;
+    h2{
+        color:darkgoldenrod;
+    }
+    #logo{
+        width:30vw;
+        height:15vw;
+    }
+}

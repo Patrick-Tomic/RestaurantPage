@@ -2,7 +2,7 @@ import _ from 'lodash';
 import './styles/main.scss';
 import buildMain, {build} from './main.js'
 import buildMenu, {menu} from './menu.js'
-
+ const body = document.querySelector('#header');
 const content = document.getElementById('content');
 content.appendChild(buildMain());
 const header = document.createElement('div');
@@ -14,7 +14,7 @@ Menubtn.addEventListener('click',()=>{
     content.innerHTML = "";
     
     content.appendChild(buildMenu());
-    content.appendChild(header);
+    body.appendChild(header);
 });
 header.appendChild(Menubtn);
 const mainBtn = document.createElement('button');
@@ -22,9 +22,9 @@ mainBtn.innerHTML = "Main";
 mainBtn.classList.add('btn');
 mainBtn.addEventListener('click',()=>{
     content.innerHTML = "";
-    
+    body.appendChild(header);
     content.appendChild(buildMain());
-    content.appendChild(header);
+    
 });
 header.appendChild(mainBtn);
-content.appendChild(header);
+body.appendChild(header);
